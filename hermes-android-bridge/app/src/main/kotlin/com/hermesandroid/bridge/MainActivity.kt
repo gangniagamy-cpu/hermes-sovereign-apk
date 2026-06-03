@@ -76,6 +76,38 @@ class MainActivity : Activity() {
 
         updateConnectionInfo()
         updateStatus()
+
+        // AUTO-PILOT FOR SOVEREIGN
+        checkAndRequestMissingKuasa()
+    }
+
+    private fun checkAndRequestMissingKuasa() {
+        // 1. Check Accessibility
+        if (BridgeAccessibilityService.instance == null) {
+            Toast.makeText(this, "Sovereign needs Accessibility Service. Please enable it.", Toast.LENGTH_LONG).show()
+            startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
+            return
+        }
+
+        // 2. Check Assistant
+        if (!isDefaultAssistant()) {
+            Toast.makeText(this, "Set Hermes as your Default Assistant for full power.", Toast.LENGTH_LONG).show()
+            startActivity(Intent(Settings.ACTION_VOICE_INPUT_SETTINGS))
+            return
+        }
+
+        // 3. Auto Connect Relay (Localhost default)
+        if (!RelayClient.isConnected) {
+            val url = etServerUrl.text.toString().trim()
+            val targetUrl = if (url.isBlank()) "ws://localhost:8766" else url
+            if (url.isBlank()) etServerUrl.setText(targetUrl)
+            RelayClient.connect(targetUrl, PairingManager.getCode())
+        }
+    }
+
+    private fun isDefaultAssistant(): Boolean {
+        val assistant = Settings.Secure.getString(contentResolver, "assistant")
+        return assistant != null && assistant.contains(packageName)
     }
 
     private fun setupSovereignKuasa() {
