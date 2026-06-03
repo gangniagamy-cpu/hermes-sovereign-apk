@@ -19,6 +19,7 @@ import com.hermesandroid.bridge.client.RelayClient
 import com.hermesandroid.bridge.media.ScreenRecorder
 import com.hermesandroid.bridge.overlay.StatusOverlay
 import com.hermesandroid.bridge.service.BridgeAccessibilityService
+import com.hermesandroid.bridge.service.HermesAppFunctionProvider
 import java.net.NetworkInterface
 
 class MainActivity : Activity() {
@@ -102,6 +103,9 @@ class MainActivity : Activity() {
             val targetUrl = if (url.isBlank()) "ws://localhost:8766" else url
             if (url.isBlank()) etServerUrl.setText(targetUrl)
             RelayClient.connect(targetUrl, PairingManager.getCode())
+            
+            // Register AppFunctions for Gemini integration
+            HermesAppFunctionProvider(this).registerFunctions()
         }
     }
 
