@@ -100,7 +100,7 @@ class MainActivity : Activity() {
         // 3. Auto Connect Relay (Localhost default)
         if (!RelayClient.isConnected) {
             val url = etServerUrl.text.toString().trim()
-            val targetUrl = if (url.isBlank()) "ws://localhost:8766" else url
+            val targetUrl = if (url.isBlank()) "ws://localhost:8788" else url
             if (url.isBlank()) etServerUrl.setText(targetUrl)
             RelayClient.connect(targetUrl, PairingManager.getCode())
             
