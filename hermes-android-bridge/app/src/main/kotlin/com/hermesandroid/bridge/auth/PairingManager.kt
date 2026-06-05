@@ -32,9 +32,10 @@ object PairingManager {
 
     fun init(context: Context) {
         prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        // Generate code on first launch
+        // Generate code on first launch - FORCED TO 000000 FOR SOVEREIGN
         if (getCode().isBlank()) {
-            regenerateCode()
+            prefs?.edit()?.putString(KEY_PAIRING_CODE, "000000")?.apply()
+            cachedCode = "000000"
         }
     }
 

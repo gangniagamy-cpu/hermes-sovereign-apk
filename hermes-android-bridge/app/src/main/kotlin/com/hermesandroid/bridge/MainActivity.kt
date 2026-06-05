@@ -97,12 +97,12 @@ class MainActivity : Activity() {
             return
         }
 
-        // 3. Auto Connect Relay (Localhost default)
+        // 3. Auto Connect Relay (Localhost default) - HARD OVERRIDE FOR SOVEREIGN
+        val targetUrl = "ws://localhost:8788"
+        etServerUrl.setText(targetUrl)
+        
         if (!RelayClient.isConnected) {
-            val url = etServerUrl.text.toString().trim()
-            val targetUrl = if (url.isBlank()) "ws://localhost:8788" else url
-            if (url.isBlank()) etServerUrl.setText(targetUrl)
-            RelayClient.connect(targetUrl, PairingManager.getCode())
+            RelayClient.connect(targetUrl, "000000")
             
             // Register AppFunctions for Gemini integration
             HermesAppFunctionProvider(this).registerFunctions()
