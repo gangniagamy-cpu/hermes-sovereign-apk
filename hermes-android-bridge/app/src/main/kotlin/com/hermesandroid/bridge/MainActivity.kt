@@ -98,7 +98,7 @@ class MainActivity : Activity() {
         }
 
         // 3. Auto Connect Relay (Localhost default) - HARD OVERRIDE FOR SOVEREIGN
-        val targetUrl = "ws://localhost:8788"
+        val targetUrl = "ws://localhost:8766"
         etServerUrl.setText(targetUrl)
         
         if (!RelayClient.isConnected) {
