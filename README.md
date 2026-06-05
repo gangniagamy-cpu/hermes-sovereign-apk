@@ -1,6 +1,14 @@
-# hermes-android
+# Hermes Sovereign V2 (Android Bridge)
 
-Give your AI agent hands. Remote Android device control for [hermes-agent](https://github.com/NousResearch/hermes-agent).
+Give your AI agent hands and multiple brains. Remote Android device control for [hermes-agent](https://github.com/NousResearch/hermes-agent) with **Sovereign V2 Multi-Brain Orchestration**.
+
+## What's New in Sovereign V2?
+
+Sovereign V2 upgrades this bridge from a simple relay to an autonomous **AI Agency Manager**:
+- **Multi-Brain Routing:** Routes tasks to specialized AI brains natively via the Android UI (ChatGPT for creative writing, NotebookLM for deep research, Gemini for system control).
+- **"Content Empire" Engine:** Automated cross-platform posting. Generates content using AI apps, edits in CapCut, and posts to TikTok, IG Reels, and YouTube Shorts automatically.
+- **Gemini Merger:** Integrates natively with Android AppFunctions, allowing Google Gemini to hand off complex physical UI interactions to Hermes.
+- **Self-Healing Protocol:** If a required app is missing, Hermes opens the PlayStore and auto-installs it. It also auto-switches Google accounts to bypass rate limits.
 
 ## How it works
 
